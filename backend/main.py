@@ -3,6 +3,9 @@ PinkSync Main FastAPI Application
 Deaf-first AI accessibility synchronization platform
 """
 
+from strawberry.fastapi import GraphQLRouter
+from app.graphql.schema import schema
+from app.routes import providers, services, products
 from fastapi import FastAPI, HTTPException, Depends, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
