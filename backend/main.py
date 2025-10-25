@@ -99,7 +99,8 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(s
         return user
     except Exception as e:
         raise HTTPException(status_code=401, detail="Invalid authentication credentials")
-
+app.include_router(graphql_app, prefix="/graphql")
+"}
 # Health check endpoint
 @app.get("/api/health")
 async def health_check():
