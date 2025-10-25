@@ -1,0 +1,13 @@
+
+# REST routes
+app.include_router(providers.router, prefix="/api/providers", tags=["providers"])
+app.include_router(services.router, prefix="/api/services", tags=["services"])
+app.include_router(products.router, prefix="/api/products", tags=["products"])
+
+# GraphQL
+graphql_app = GraphQLRouter(schema)
+app.include_router(graphql_app, prefix="/graphql")
+
+@app.get("/")
+def root():
+    return {"status": "PinkSync is live"}
