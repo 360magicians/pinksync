@@ -1,0 +1,24 @@
+import strawberry
+from app.utils.id_utils import decode_gid
+from app.routes.providers import get_provider
+
+@strawberry.type
+class Provider:
+    id: strawberry.ID
+    name: str
+    accessibility_features: list[str]
+
+@strawberry.type
+class Query:
+    @strawberry.field
+    def node(self, id: strawberry.ID) -> Provider:
+        _, type_name, db_id = decode_gid(id)
+        if type_name == "Provider":
+            data = get_provider(db_id)
+            return Provider(
+                id=id,
+                name=data["name"],
+                accessibility_features=data["accessibility_features"]
+            )
+
+schema = strawberry.Schema(query=Query)
