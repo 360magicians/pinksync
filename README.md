@@ -1,1 +1,0 @@
-Server Actions GraphQL API/Guides/Using global node ID of deaf accessibility providers,services and products via the REST API and use them in GraphQL operations duties for DeafAUTH users
